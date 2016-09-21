@@ -8,7 +8,7 @@ Take an existing site that is confusing and recreate a wireframe that works bett
 * Create sitemap
 * Create 2 separate wireframe options
 * Create 2 separate mock up options
-* Create ReadMe.md
+* Create README.md
 * Make gantt chart
 
 ##Create Powerpoint
