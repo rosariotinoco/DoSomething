@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="_css/circle-arrows/style.css">
+	<head>
+		<title>DoSomething Proposal</title>
+		<style>
+			#controlled {
+				width: 960px;
+				height: 600px;
+				border: solid 2px #ebdd65;
+				margin: auto;
+
+				position: relative;
+			}
+			#controlled .slides {
+				width: 960px;
+				height: 600px;
+
+				position: relative;
+
+				overflow: hidden;
+			}
+			#controlled .slides img {
+				position: absolute;
+				left: 0px; 
+				top: 0px; 
+			}
+
+			.controls div {
+				position: absolute;
+				top: 200px;
+				font-size: 100px;
+				font-weight: lighter;
+				color: #ebdd65;
+				font-family: 'Lato', sans-serif;
+        font-weight: 100;
+
+				cursor: pointer;
+			}
+			.controls div.left { left: -100px; }
+			.controls div.right { right: -100px; }
+		</style>
+	</head>
+	<body>
+	<!-- 	<h1>DoSomething Proposal</h1> -->
+
+		<div id="controlled">
+			<div class="slides">
+				<img src="_img/one.jpg" width="960" height="600">
+				<img src="_img/two.jpg" width="960" height="600">
+				<img src="_img/three.jpg" width="960" height="600">
+				<img src="_img/four.jpg" width="960" height="600">
+				<img src="_img/five.jpg" width="960" height="600">
+				<img src="_img/six.jpg" width="960" height="600">
+				<img src="_img/seven.jpg" width="960" height="600">
+				<img src="_img/eight.jpg" width="960" height="600">
+				<img src="_img/nine.jpg" width="960" height="600">
+				<img src="_img/ten.jpg" width="960" height="600">
+				<img src="_img/eleven.jpg" width="960" height="600">
+				<img src="_img/twelve.jpg" width="960" height="600">
+				<img src="_img/thirteen.jpg" width="960" height="600">
+			</div>
+			<div class="controls">
+				<div class="left">&lt;</div>
+				<div class="right">&gt;</div>
+			</div>
+		</div>
+
+		<script src="_js/jquery-1.11.0.min.js"></script>
+		<script>
+			/*-------------------------------------
+			| greater than
+			-------------------------------------*/
+			$('#controlled .slides img:gt(0)').css({'left':'960px'});
+
+			/*-------------------------------------
+			| Slide Left
+			-------------------------------------*/
+			var sliding = false;
+
+			function slide_left() {
+				if (sliding == false)
+				{
+					sliding = true;
+					$('#controlled .slides img:eq(0)').css({'left':'0px'}).animate({'left':'-960px'}, 960, whenDone);
+					$('#controlled .slides img:eq(1)').css({'left':'960px'}).animate({'left':'0px'}, 960);
+
+					function whenDone() {
+						$('#controlled .slides img:eq(0)').css({'left':'960px'}).appendTo('#controlled .slides');
+						sliding = false;
+					}
+				}
+			}
+
+			$('.controls div.left').click(slide_left);
+
+			/*-------------------------------------
+			| Slide Left
+			-------------------------------------*/
+			function slide_right() {
+				if (sliding == false)
+				{
+					sliding = true;
+					$('#controlled .slides img:eq(0)').css({'left':'0px'}).animate({'left':'960px'}, 960);
+					$('#controlled .slides img:last').css({'left':'-960px'}).animate({'left':'0px'}, 960, whenDone);
+
+					function whenDone() {
+						$('#controlled .slides img:last').css({'left':'0px'}).prependTo('#controlled .slides');
+						sliding = false;
+					}
+				}
+			}
+
+			$('.controls div.right').click(slide_right);
+
+		</script>
+	</body>
+</html>
